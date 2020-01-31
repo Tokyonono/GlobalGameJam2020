@@ -26,8 +26,19 @@ func _process(delta):
 		_fall_into_trash(all_items.front())
 
 func _input(event):
-    if event.is_action_pressed("approve_item") && all_items.size() != 0:
-        _fall_into_trash(all_items.front())
+	if all_items.size() != 0:
+		if event.is_action_pressed("approve_item"):
+			if all_items.front().faulty:
+				$Label.text = "Miss"
+			else:
+				$Label.text = "Good"
+			_fall_into_trash(all_items.front())
+		elif event.is_action_pressed("reject_item"):
+			if all_items.front().faulty:
+				$Label.text = "Good"
+			else:
+				$Label.text = "Miss"
+			_fall_into_trash(all_items.front())
 		
 func _gen_new_item():
 	var new_item = preloaded_item.instance()
