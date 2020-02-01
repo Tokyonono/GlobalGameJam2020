@@ -41,15 +41,6 @@ func _input(event):
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
 		_next()
-	elif event.is_action_pressed("reject_item"):
-		if current_item.condition != current_item.ShieldCondition.CORRECT:
-			$ResultLabel.text = "Good"
-			$GameState.add_point($GameState.Point.RIGHT)
-		else:
-			$ResultLabel.text = "Miss"
-			$GameState.add_point($GameState.Point.WRONG)
-			_screen_flash(flash_fail, 0.8)
-		_next()
 	elif event.is_action_pressed("clean_rust"):
 		if current_item.condition != current_item.ShieldCondition.RUST:
 			$ResultLabel.text = "Miss"
