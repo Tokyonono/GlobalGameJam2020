@@ -24,14 +24,18 @@ func _input(event):
 	if event.is_action_pressed("approve_item"):
 		if current_item.faulty:
 			$Label.text = "Miss"
+			$GameState.add_point($GameState.Point.BROKE)
 		else:
 			$Label.text = "Good"
+			$GameState.add_point($GameState.Point.PASSED)
 		_next()
 	elif event.is_action_pressed("reject_item"):
 		if current_item.faulty:
 			$Label.text = "Good"
+			$GameState.add_point($GameState.Point.PASSED)
 		else:
 			$Label.text = "Miss"
+			$GameState.add_point($GameState.Point.BROKE)
 		_next()
 
 func _push_into_conveyor():
@@ -52,7 +56,12 @@ func _set_initial_position(item):
 
 
 func _on_UI_start_game():
+	$GameState.start_game()
 	_push_into_conveyor()
 	_push_into_conveyor()
 	_push_into_conveyor()
 	_push_into_conveyor()
+
+
+func _on_GameState_game_ended(score):
+	$UI.show_game_over()
