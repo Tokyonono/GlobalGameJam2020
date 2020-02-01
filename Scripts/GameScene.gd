@@ -8,6 +8,7 @@ var generate_every_x_seconds = 1.5
 
 onready var conveyor = get_node("Conveyor")
 
+signal end_game
 var flash_progress = 0.0
 var screen_default = Color.black
 var flash_fail = Color.red
@@ -17,13 +18,15 @@ var flash_speed = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	start_a_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_tick_flash(delta)
 
 func _input(event):
+	if $GameState.current_state != $GameState.State.GAME:
+		return
 	var current_item = conveyor._current();
 	if current_item == null:
 		_next()
@@ -78,7 +81,7 @@ func _tick_flash(delta):
 	flash_progress -= delta
 	flash_progress = clamp(flash_progress, 0.0, 1.0)
 
-func _on_UI_start_game():
+func start_a_game():
 	$GameState.start_game()
 	_push_into_conveyor()
 	_push_into_conveyor()
@@ -87,4 +90,4 @@ func _on_UI_start_game():
 
 
 func _on_GameState_game_ended(score):
-	$UI.show_game_over()
+	emit_signal("end_game")
