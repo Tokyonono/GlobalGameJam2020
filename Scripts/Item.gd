@@ -9,14 +9,38 @@ var start_scale = null
 var start_transform = null
 var target_scale = null
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#_load_texture('Blue', 'Missing')
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var my_random_number = rng.randi_range(0, 100)
 	if my_random_number < 20:
 		faulty = true
 		modulate = Color(1,0,0)
+		
+		
+
+
+func _load_texture(itemColour, itemCondition):
+	var text_path = ""
+	if itemColour == 'Blue':
+		if itemCondition == 'Missing':
+			text_path = 'res://Art/Blue_Missing.png'
+		if itemCondition == 'Correct':
+			text_path = 'res://Art/Blue_Correct.png'
+			
+	texture = load(text_path)
+	
+	#var rand_text_suffix = int( rand_range(1,3) ) #random int, 1-10
+	
+	#if rand_text_suffix == 1:
+	#	text_path = 'res://Art/Blue_Missing.png'
+	#if rand_text_suffix == 2:
+	#	text_path = 'res://Art/Blue_Correct.png'
+	##texture = load(text_path)
+
 
 func _set_target_position(var targetPos, var targetScale):
 	start_position = get_global_position()
