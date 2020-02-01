@@ -53,6 +53,15 @@ func _input(event):
 
 func _push_into_conveyor():
 	var new_item = preloaded_item.instance()
+	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var my_random_number = rng.randi_range(0, 100)
+	if my_random_number < 20:
+		new_item._set_Colour_Condition('Blue', 'Missing')
+	else:
+		new_item._set_Colour_Condition('Blue', 'Correct')
+	
 	_set_initial_position(new_item)
 	add_child(new_item)
 	conveyor._add(new_item)

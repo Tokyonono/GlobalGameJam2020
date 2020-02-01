@@ -8,21 +8,39 @@ var start_position = null
 var start_scale = null
 var start_transform = null
 var target_scale = null
+var colour = 'Blue'
+var condition = 'Correct'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var my_random_number = rng.randi_range(0, 100)
-	if my_random_number < 20:
+	_load_texture(colour, condition)
+
+func _set_Colour_Condition(itemColour, itemCondition):
+	colour = itemColour
+	condition = itemCondition
+	if itemCondition != "Correct":
 		faulty = true
-		modulate = Color(1,0,0)
+
+func _load_texture(itemColour, itemCondition):
+	var text_path = ""
+	if itemColour == 'Blue':
+		if itemCondition == 'Missing':
+			text_path = 'res://Art/Blue_Missing.png'
+		if itemCondition == 'Correct':
+			text_path = 'res://Art/Blue_Correct.png'
+			
+	texture = load(text_path)
+
 
 func _set_target_position(var targetPos, var targetScale):
 	start_position = get_global_position()
 	target_position = targetPos
 	target_scale = targetScale
 	lerp_progress = 0.0
+	
+func _absorb_transform(var sourceNode):
+	_set_target_position(sourceNode.get_global_position(), sourceNode.get_global_scale())
+	z_index = sourceNode.z_index
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
