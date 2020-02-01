@@ -12,9 +12,12 @@ var trash_position = 150
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_gen_new_item()
+	$GameState.start_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if $GameState.current_state != $GameState.State.GAME:
+		return
 	if accumulator > generate_every_x_seconds:
 		accumulator = 0
 		_gen_new_item()
@@ -30,14 +33,18 @@ func _input(event):
 		if event.is_action_pressed("approve_item"):
 			if all_items.front().faulty:
 				$Label.text = "Miss"
+				$GameState.add_point($GameState.Point.BROKE)
 			else:
 				$Label.text = "Good"
+				$GameState.add_point($GameState.Point.PASSED)
 			_fall_into_trash(all_items.front())
 		elif event.is_action_pressed("reject_item"):
 			if all_items.front().faulty:
 				$Label.text = "Good"
+				$GameState.add_point($GameState.Point.PASSED)
 			else:
 				$Label.text = "Miss"
+				$GameState.add_point($GameState.Point.BROKE)
 			_fall_into_trash(all_items.front())
 		
 func _gen_new_item():
@@ -57,3 +64,10 @@ func _fall_into_trash(item):
 	all_items.pop_front()
 	remove_child(item)
 	item.queue_free()
+
+
+func _on_GameState_game_ended(score):
+	for item in all_items:
+		remove_child(item)
+		item.queue_free()
+	all_items.clear()
