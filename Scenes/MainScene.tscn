@@ -6,11 +6,6 @@
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
-<<<<<<< HEAD
 [node name="main_bg" type="Sprite" parent="."]
 position = Vector2( 512.845, 300 )
-=======
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 512.586, 301.207 )
->>>>>>> f8e59abd79143a519e8128c88204e9bd07224191
 texture = ExtResource( 2 )

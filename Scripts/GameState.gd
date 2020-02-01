@@ -9,7 +9,7 @@ enum Point {
 }
 
 var current_state = State.START
-var game_duration = 60.0 * 1.0 # Number of seconds
+var game_duration = 60.0 * 5.0 # Number of seconds
 var game_paused = false
 var score = 0
 
