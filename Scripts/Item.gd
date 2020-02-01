@@ -24,6 +24,10 @@ func _set_target_position(var targetPos, var targetScale):
 	target_scale = targetScale
 	lerp_progress = 0.0
 	
+func _absorb_transform(var sourceNode):
+	_set_target_position(sourceNode.get_global_position(), sourceNode.get_global_scale())
+	z_index = sourceNode.z_index
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if target_position != null:

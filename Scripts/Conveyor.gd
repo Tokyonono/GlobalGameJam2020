@@ -30,7 +30,7 @@ func _current():
 func _refresh_position_2():
 	var lead_index = slots.size() - active.size()
 	for item in active:
-		item._set_target_position(slots[lead_index].get_global_position(), slots[lead_index].get_global_scale())
+		item._absorb_transform(slots[lead_index])
 		lead_index += 1
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
