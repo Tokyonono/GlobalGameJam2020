@@ -1,6 +1,7 @@
 extends Sprite
 
-var faulty = false
+enum ShieldCondition {CORRECT=0, RUST=1, CRACK=2}
+var condition = ShieldCondition.CORRECT
 var target_position = null
 var lerp_progress = 0.0
 var lerp_speed = 2.5
@@ -8,31 +9,21 @@ var start_position = null
 var start_scale = null
 var start_transform = null
 var target_scale = null
-var colour = 'Blue'
-var condition = 'Correct'
 
 var flash_timer = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_load_texture(colour, condition)
+	update_texture()
 
-func _set_Colour_Condition(itemColour, itemCondition):
-	colour = itemColour
-	condition = itemCondition
-	if itemCondition != "Correct":
-		faulty = true
-
-func _load_texture(itemColour, itemCondition):
-	var text_path = ""
-	if itemColour == 'Blue':
-		if itemCondition == 'Missing':
-			text_path = 'res://Art/Blue_Missing.png'
-		if itemCondition == 'Correct':
-			text_path = 'res://Art/Blue_Correct.png'
-			
-	texture = load(text_path)
-
+func update_texture():
+	match condition:
+		ShieldCondition.CORRECT:
+			texture = load("res://Art/Shield_Correct.png")
+		ShieldCondition.RUST:
+			texture = load("res://Art/Shield_Rust.png") 
+		ShieldCondition.CRACK:
+			texture = load("res://Art/Shield_Cracked.png")
 
 func _set_target_position(var targetPos, var targetScale):
 	start_position = get_global_position()

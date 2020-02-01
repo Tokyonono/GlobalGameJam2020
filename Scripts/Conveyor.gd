@@ -14,7 +14,6 @@ func _ready():
 		slots.append(get_node("slot_" + str(i)))
 
 func _add(var item):
-	print(active.size())
 	if active.size() >= max_active:
 		active.pop_front().free()
 	if active.size() < max_active:
@@ -22,9 +21,12 @@ func _add(var item):
 	else:
 		incoming.push_back(item)
 	_refresh_position_2()
-
+	
 func _current():
-	if active.size() < 4: return null
+	if active.size() < 4: 
+		return null
+	elif active.size() < max_active:
+		return active.front()
 	return active[3]
 
 func _refresh_position_2():

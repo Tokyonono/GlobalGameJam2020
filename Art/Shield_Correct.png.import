@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blue_Correct.png-fa33612be351fda67870f72083168a02.stex"
+path="res://.import/Shield_Correct.png-d10eb549369cb406f5621e6464600a65.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Blue_Correct.png"
-dest_files=[ "res://.import/Blue_Correct.png-fa33612be351fda67870f72083168a02.stex" ]
+source_file="res://Art/Shield_Correct.png"
+dest_files=[ "res://.import/Shield_Correct.png-d10eb549369cb406f5621e6464600a65.stex" ]
 
 [params]
 

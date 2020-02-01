@@ -4,14 +4,12 @@ signal game_ended(score)
 
 enum State {START, GAME, PAUSE, RESULT}
 enum Point {
-	TRASH = 0,
-	PASSED = 5,
-	FIXED = 10,
-	BROKE = -15,
+	WRONG = -5,
+	RIGHT = 5,
 }
 
 var current_state = State.START
-var game_duration = 60.0 * 0.1 # Number of seconds
+var game_duration = 60.0 * 5.0 # Number of seconds
 var game_paused = false
 var score = 0
 

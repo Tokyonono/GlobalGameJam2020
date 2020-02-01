@@ -29,27 +29,29 @@ func _input(event):
 		return
 	var current_item = conveyor._current();
 	if current_item == null:
-		_next()
+		#_next()
 		return
 
 	if event.is_action_pressed("approve_item"):
-		if current_item.faulty:
+		if current_item.condition != current_item.ShieldCondition.CORRECT:
 			$Label.text = "Miss"
-			$GameState.add_point($GameState.Point.BROKE)
+			$GameState.add_point($GameState.Point.WRONG)
 			_screen_flash(flash_fail, 0.8)
 		else:
 			$Label.text = "Good"
-			$GameState.add_point($GameState.Point.PASSED)
+			$GameState.add_point($GameState.Point.RIGHT)
 		_next()
 	elif event.is_action_pressed("reject_item"):
-		if current_item.faulty:
+		if current_item.condition != current_item.ShieldCondition.CORRECT:
 			$Label.text = "Good"
-			$GameState.add_point($GameState.Point.PASSED)
+			$GameState.add_point($GameState.Point.RIGHT)
 		else:
 			$Label.text = "Miss"
-			$GameState.add_point($GameState.Point.BROKE)
+			$GameState.add_point($GameState.Point.WRONG)
 			_screen_flash(flash_fail, 0.8)
 		_next()
+	# elif event.is_action_pressed("clean_rust"):
+	# elif event.is_action_pressed("fix_crack"):
 
 func _push_into_conveyor():
 	var new_item = preloaded_item.instance()
@@ -58,9 +60,11 @@ func _push_into_conveyor():
 	rng.randomize()
 	var my_random_number = rng.randi_range(0, 100)
 	if my_random_number < 20:
-		new_item._set_Colour_Condition('Blue', 'Missing')
+		new_item.condition = new_item.ShieldCondition.CRACK
+	elif my_random_number < 40:
+		new_item.condition = new_item.ShieldCondition.RUST
 	else:
-		new_item._set_Colour_Condition('Blue', 'Correct')
+		new_item.condition = new_item.ShieldCondition.CORRECT
 	
 	_set_initial_position(new_item)
 	add_child(new_item)
