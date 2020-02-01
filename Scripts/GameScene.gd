@@ -10,10 +10,7 @@ onready var conveyor = get_node("Conveyor")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,14 +24,18 @@ func _input(event):
 	if event.is_action_pressed("approve_item"):
 		if current_item.faulty:
 			$Label.text = "Miss"
+			$GameState.add_point($GameState.Point.BROKE)
 		else:
 			$Label.text = "Good"
+			$GameState.add_point($GameState.Point.PASSED)
 		_next()
 	elif event.is_action_pressed("reject_item"):
 		if current_item.faulty:
 			$Label.text = "Good"
+			$GameState.add_point($GameState.Point.PASSED)
 		else:
 			$Label.text = "Miss"
+			$GameState.add_point($GameState.Point.BROKE)
 		_next()
 
 func _push_into_conveyor():
@@ -52,3 +53,15 @@ func _set_initial_position(item):
 	position.x -= sprite_size.x/2 + item_initial_offset.x
 	position.y -= sprite_size.y/2 + item_initial_offset.y
 	item.set_position(position)
+
+
+func _on_UI_start_game():
+	$GameState.start_game()
+	_push_into_conveyor()
+	_push_into_conveyor()
+	_push_into_conveyor()
+	_push_into_conveyor()
+
+
+func _on_GameState_game_ended(score):
+	$UI.show_game_over()
