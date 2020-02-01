@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://Scripts/Conveyor.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GameScene.gd" type="Script" id=2]
 
 [node name="Node2D" type="Node2D"]
@@ -12,3 +13,27 @@ text = "RESULT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Conveyor" type="Node2D" parent="."]
+position = Vector2( 510.9, 402.936 )
+script = ExtResource( 1 )
+
+[node name="slot_0" type="Node2D" parent="Conveyor"]
+position = Vector2( -400, 0 )
+
+[node name="slot_1" type="Node2D" parent="Conveyor"]
+position = Vector2( -250, 0 )
+
+[node name="slot_2" type="Node2D" parent="Conveyor"]
+position = Vector2( -100, 0 )
+
+[node name="slot_3" type="Node2D" parent="Conveyor"]
+
+[node name="slot_4" type="Node2D" parent="Conveyor"]
+position = Vector2( 100, 0 )
+
+[node name="slot_5" type="Node2D" parent="Conveyor"]
+position = Vector2( 250, 0 )
+
+[node name="slot_6" type="Node2D" parent="Conveyor"]
+position = Vector2( 400, 0 )
