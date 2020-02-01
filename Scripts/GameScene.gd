@@ -34,19 +34,19 @@ func _input(event):
 
 	if event.is_action_pressed("approve_item"):
 		if current_item.faulty:
-			$Label.text = "Miss"
+			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.BROKE)
 			_screen_flash(flash_fail, 0.8)
 		else:
-			$Label.text = "Good"
+			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.PASSED)
 		_next()
 	elif event.is_action_pressed("reject_item"):
 		if current_item.faulty:
-			$Label.text = "Good"
+			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.PASSED)
 		else:
-			$Label.text = "Miss"
+			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.BROKE)
 			_screen_flash(flash_fail, 0.8)
 		_next()

@@ -1,16 +1,29 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Conveyor.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GameScene.gd" type="Script" id=2]
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/GameState.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 54
+font_data = ExtResource( 3 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="ResultLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 386.91
+margin_top = 46.1959
+margin_right = 629.91
+margin_bottom = 112.196
+custom_fonts/font = SubResource( 1 )
 text = "RESULT"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

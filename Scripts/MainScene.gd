@@ -23,14 +23,15 @@ func _show_screen(screen):
 		Screen.RESULT:
 			current_screen = end_screen.instance();
 			current_screen.connect("start_game", self, "_game_started")
-	#@3current_screen.show_game_over()
 	add_child(current_screen);
 
 func _game_started():
 	_show_screen(Screen.GAME)
 	
 func _game_ended():
+	#current_screen.set_score(score)
 	_show_screen(Screen.RESULT)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

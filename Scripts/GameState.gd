@@ -25,7 +25,7 @@ func _process(delta):
 	var minutes = int($Timer.time_left)/60
 	var seconds = int($Timer.time_left)%60
 	var ms = int(($Timer.time_left - minutes - seconds) * 100.0)
-	$Label.text = "%dmin %ds %dms" % [minutes, seconds, ms]
+	$TimeLabel.text = "%dmin %ds %dms" % [minutes, seconds, ms]
 
 func _input(event):
 	if event.is_action_pressed("pause_game"):
@@ -51,7 +51,7 @@ func _end_game():
 	
 func add_point(point):
 	score += point
-	$Label2.text = "Score: %d" % score
+	$ScoreLabel.text = "Score: %d" % score
 
 func _on_Timer_timeout():
 	$Timer.stop()
