@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Conveyor.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GameScene.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/UIScene.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/GameState.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
@@ -54,8 +53,5 @@ position = Vector2( 319.549, -51.6607 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 1
 
-[node name="UI" parent="." instance=ExtResource( 3 )]
-
 [node name="GameState" parent="." instance=ExtResource( 4 )]
-[connection signal="start_game" from="UI" to="." method="_on_UI_start_game"]
 [connection signal="game_ended" from="GameState" to="." method="_on_GameState_game_ended"]

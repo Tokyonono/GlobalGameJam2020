@@ -5,7 +5,6 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 
-signal start_game
 # Called when the node enters the scene tree for the first time.
 var timer
 
