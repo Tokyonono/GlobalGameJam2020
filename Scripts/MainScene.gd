@@ -5,7 +5,10 @@ var start_screen = preload("res://Scenes/StartScene.tscn")
 var game_screen = preload("res://Scenes/GameScene.tscn")
 var end_screen = preload("res://Scenes/EndScene.tscn")
 var current_screen = null
+var flash_duration = 0.3
+var flash_timer = 0.0
 
+onready var main_bg = get_node("main_bg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,8 +34,16 @@ func _game_started():
 func _game_ended():
 	#current_screen.set_score(score)
 	_show_screen(Screen.RESULT)
-	
+
+func _flash_error():
+	flash_timer = flash_duration
+
+func _tick_bg_color(delta):
+	if flash_timer <= 0.0:
+		return
+	main_bg.modulate = Color.white.linear_interpolate(Color.red*2.5, flash_timer)
+	flash_timer -= delta
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	_tick_bg_color(delta)

@@ -36,16 +36,25 @@ func _input(event):
 		if current_item.condition != current_item.ShieldCondition.CORRECT:
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
-			_screen_flash(flash_fail, 0.8)
+			get_tree().get_root().get_node("Main")._flash_error()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
+		_next()
+	elif event.is_action_pressed("reject_item"):
+		if current_item.condition != current_item.ShieldCondition.CORRECT:
+			$ResultLabel.text = "Good"
+			$GameState.add_point($GameState.Point.RIGHT)
+		else:
+			$ResultLabel.text = "Miss"
+			$GameState.add_point($GameState.Point.WRONG)
+			get_tree().get_root().get_node("Main")._flash_error()
 		_next()
 	elif event.is_action_pressed("clean_rust"):
 		if current_item.condition != current_item.ShieldCondition.RUST:
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
-			_screen_flash(flash_fail, 0.8)
+			get_tree().get_root().get_node("Main")._flash_error()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -54,7 +63,7 @@ func _input(event):
 		if current_item.condition != current_item.ShieldCondition.CRACK:
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
-			_screen_flash(flash_fail, 0.8)
+			get_tree().get_root().get_node("Main")._flash_error()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
