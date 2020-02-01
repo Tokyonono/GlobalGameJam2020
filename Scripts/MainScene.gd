@@ -32,9 +32,9 @@ func _show_screen(screen):
 func _game_started():
 	_show_screen(Screen.GAME)
 	
-func _game_ended():
-	#current_screen.set_score(score)
+func _game_ended(score):
 	_show_screen(Screen.RESULT)
+	current_screen.set_score(score)
 
 func _flash_error():
 	flash_timer = flash_duration
