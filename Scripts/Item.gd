@@ -33,6 +33,9 @@ func clean_rust():
 func fix_crack():
 	condition = ShieldCondition.CORRECT
 	_flash(flash_duration)
+	
+func break_item():
+	_on_fail()
 
 func _set_target_position(var targetPos, var targetScale):
 	start_position = get_global_position()

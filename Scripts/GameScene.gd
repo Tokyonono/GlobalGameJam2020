@@ -36,6 +36,7 @@ func _input(event):
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
+			current_item.break_item()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -46,6 +47,7 @@ func _input(event):
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
+			current_item.break_item()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -57,6 +59,7 @@ func _input(event):
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
+			current_item.break_item()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -106,6 +109,9 @@ func _tick_flash(delta):
 
 func start_a_game():
 	$GameState.start_game()
+	_push_into_conveyor()
+	_push_into_conveyor()
+	_push_into_conveyor()
 	_push_into_conveyor()
 	_push_into_conveyor()
 	_push_into_conveyor()
