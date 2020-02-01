@@ -9,7 +9,7 @@ var start_position = null
 var start_scale = null
 var start_transform = null
 var target_scale = null
-
+var flash_duration = 0.15
 var flash_timer = 0.0
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +24,14 @@ func update_texture():
 			texture = load("res://Art/Shield_Rust.png") 
 		ShieldCondition.CRACK:
 			texture = load("res://Art/Shield_Cracked.png")
+
+func clean_rust():
+	condition = ShieldCondition.CORRECT
+	_flash(flash_duration)
+	
+func fix_crack():
+	condition = ShieldCondition.CORRECT
+	_flash(flash_duration)
 
 func _set_target_position(var targetPos, var targetScale):
 	start_position = get_global_position()
@@ -60,3 +68,5 @@ func _tick_color(delta):
 		return
 	modulate = Color.white.linear_interpolate(Color.white*10, flash_timer)
 	flash_timer -= delta
+	if flash_timer <= 0.0:
+		update_texture()

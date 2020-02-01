@@ -50,6 +50,24 @@ func _input(event):
 			$GameState.add_point($GameState.Point.WRONG)
 			_screen_flash(flash_fail, 0.8)
 		_next()
+	elif event.is_action_pressed("clean_rust"):
+		if current_item.condition != current_item.ShieldCondition.RUST:
+			$ResultLabel.text = "Miss"
+			$GameState.add_point($GameState.Point.WRONG)
+			_screen_flash(flash_fail, 0.8)
+		else:
+			$ResultLabel.text = "Good"
+			$GameState.add_point($GameState.Point.RIGHT)
+			current_item.clean_rust()
+	elif event.is_action_pressed("fix_crack"):
+		if current_item.condition != current_item.ShieldCondition.CRACK:
+			$ResultLabel.text = "Miss"
+			$GameState.add_point($GameState.Point.WRONG)
+			_screen_flash(flash_fail, 0.8)
+		else:
+			$ResultLabel.text = "Good"
+			$GameState.add_point($GameState.Point.RIGHT)
+			current_item.fix_crack()
 
 func _push_into_conveyor():
 	var new_item = preloaded_item.instance()
