@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/OOT_Navi_Hey4.wav-325393b4fb037aacd289f4ad3e0966cb.sample"
+
+[deps]
+
+source_file="res://Audio/OOT_Navi_Hey4.wav"
+dest_files=[ "res://.import/OOT_Navi_Hey4.wav-325393b4fb037aacd289f4ad3e0966cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

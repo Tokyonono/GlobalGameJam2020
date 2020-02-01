@@ -14,6 +14,7 @@ var flash_target = screen_default
 var flash_speed = 1.0
 var fail_counter = 0
 var navi = null
+var navi_audio = null
 var navi_timer = 0.0
 
 onready var conveyor = get_node("Conveyor")
@@ -24,6 +25,7 @@ func _ready():
 	start_a_game()
 	
 	navi= navi_asset.instance()
+	navi_audio = navi.find_node('hey')	
 	add_child(navi)
 	_hide_navi()
 
@@ -132,6 +134,7 @@ func _tick_navi(delta):
 
 func _show_navi():
 	navi.visible = true
+	navi_audio.play()
 	navi_timer = 2
 	fail_counter = 0
 	

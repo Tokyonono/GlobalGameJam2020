@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art/Particle2.png" type="Texture" id=1]
 [ext_resource path="res://Art/navi.png" type="Texture" id=2]
 [ext_resource path="res://Art/Particle1.png" type="Texture" id=3]
+[ext_resource path="res://Audio/OOT_Navi_Hey4.wav" type="AudioStream" id=4]
+[ext_resource path="res://Art/heylisten.png" type="Texture" id=5]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
@@ -35,6 +37,9 @@ scale = 0.3
 [node name="Node2D" type="Node2D"]
 position = Vector2( -0.0813675, 0.54435 )
 
+[node name="hey" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 875.388, 101.969 )
 scale = Vector2( 0.593592, 0.593592 )
@@ -57,3 +62,7 @@ explosiveness = 0.1
 randomness = 0.03
 process_material = SubResource( 2 )
 texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( -133.951, -16.9559 )
+texture = ExtResource( 5 )
