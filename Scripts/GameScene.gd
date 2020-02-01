@@ -41,6 +41,7 @@ func _input(event):
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
 		_next()
+<<<<<<< HEAD
 	elif event.is_action_pressed("reject_item"):
 		if current_item.condition != current_item.ShieldCondition.CORRECT:
 			$ResultLabel.text = "Good"
@@ -50,6 +51,8 @@ func _input(event):
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
 		_next()
+=======
+>>>>>>> f8e59abd79143a519e8128c88204e9bd07224191
 	elif event.is_action_pressed("clean_rust"):
 		if current_item.condition != current_item.ShieldCondition.RUST:
 			$ResultLabel.text = "Miss"
