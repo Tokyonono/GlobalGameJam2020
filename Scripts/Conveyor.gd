@@ -24,6 +24,7 @@ func _add(var item):
 	_refresh_position_2()
 
 func _current():
+	if active.size() < 4: return null
 	return active[3]
 
 func _refresh_position_2():
