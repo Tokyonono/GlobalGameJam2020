@@ -26,7 +26,7 @@ func _current():
 	if active.size() < 4: 
 		return null
 	elif active.size() < max_active:
-		return active.front()
+		return active[active.size() - 4]
 	return active[3]
 
 func _refresh_position_2():

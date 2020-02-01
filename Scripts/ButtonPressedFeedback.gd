@@ -14,7 +14,6 @@ func start_fading():
 	fading_out = true
 	lerp_progress = 0.0
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !fading_out:

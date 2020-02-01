@@ -1,20 +1,18 @@
 extends Node2D
 
+signal end_game(score)
+
 var preloaded_item = preload("res://Scenes/Item.tscn")
 var window_size = OS.window_size
 var item_initial_offset = Vector2(-150, 150)
-var speed = 150
-var generate_every_x_seconds = 1.5
-
-onready var conveyor = get_node("Conveyor")
-
-signal end_game
 var flash_progress = 0.0
 var screen_default = Color.black
 var flash_fail = Color.red
 var flash_good = Color.greenyellow
 var flash_target = screen_default
 var flash_speed = 1.0
+
+onready var conveyor = get_node("Conveyor")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +36,7 @@ func _input(event):
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
+			current_item.break_item()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -48,6 +47,7 @@ func _input(event):
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
+			current_item.break_item()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -59,6 +59,7 @@ func _input(event):
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
+			current_item.break_item()
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -108,10 +109,8 @@ func _tick_flash(delta):
 
 func start_a_game():
 	$GameState.start_game()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
+	for i in range(4):
+		_push_into_conveyor()
 
 func _on_GameState_game_ended(score):
-	emit_signal("end_game")
+	emit_signal("end_game", score)
