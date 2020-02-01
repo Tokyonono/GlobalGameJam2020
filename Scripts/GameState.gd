@@ -22,7 +22,7 @@ func _ready():
 func _process(delta):
 	var minutes = int($Timer.time_left)/60
 	var seconds = int($Timer.time_left)%60
-	var ms = int(($Timer.time_left - minutes - seconds) * 100.0)
+	var ms = int(($Timer.time_left - minutes*60 - seconds) * 100.0)
 	$TimeLabel.text = "%dmin %ds %dms" % [minutes, seconds, ms]
 
 func _input(event):
