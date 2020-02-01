@@ -33,6 +33,7 @@ func _input(event):
 		return
 
 	if event.is_action_pressed("approve_item"):
+		$Stamp.start_fading()
 		if current_item.condition != current_item.ShieldCondition.CORRECT:
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
@@ -40,17 +41,9 @@ func _input(event):
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
-		_next()
-	elif event.is_action_pressed("reject_item"):
-		if current_item.condition != current_item.ShieldCondition.CORRECT:
-			$ResultLabel.text = "Good"
-			$GameState.add_point($GameState.Point.RIGHT)
-		else:
-			$ResultLabel.text = "Miss"
-			$GameState.add_point($GameState.Point.WRONG)
-			get_tree().get_root().get_node("Main")._flash_error()
 		_next()
 	elif event.is_action_pressed("clean_rust"):
+		$Polish.start_fading()
 		if current_item.condition != current_item.ShieldCondition.RUST:
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
@@ -59,7 +52,9 @@ func _input(event):
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
 			current_item.clean_rust()
+		_next()
 	elif event.is_action_pressed("fix_crack"):
+		$Hammer.start_fading()
 		if current_item.condition != current_item.ShieldCondition.CRACK:
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
@@ -68,6 +63,7 @@ func _input(event):
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
 			current_item.fix_crack()
+		_next()
 
 func _push_into_conveyor():
 	var new_item = preloaded_item.instance()
@@ -112,9 +108,6 @@ func _tick_flash(delta):
 
 func start_a_game():
 	$GameState.start_game()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
 	_push_into_conveyor()
 	_push_into_conveyor()
 	_push_into_conveyor()

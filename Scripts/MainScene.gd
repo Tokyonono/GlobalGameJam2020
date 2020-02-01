@@ -15,7 +15,8 @@ func _ready():
 	_show_screen(Screen.MENU)
 
 func _show_screen(screen):
-	remove_child(current_screen)
+	if current_screen != null:
+		remove_child(current_screen)
 	match screen:
 		Screen.MENU:
 			current_screen= start_screen.instance();
