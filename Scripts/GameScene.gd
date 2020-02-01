@@ -8,15 +8,19 @@ var generate_every_x_seconds = 1.5
 
 onready var conveyor = get_node("Conveyor")
 
+signal end_game
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	start_a_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func _input(event):
+	if $GameState.current_state != $GameState.State.GAME:
+		return
 	var current_item = conveyor._current();
 	if current_item == null:
 		_next()
@@ -55,7 +59,7 @@ func _set_initial_position(item):
 	item.set_position(position)
 
 
-func _on_UI_start_game():
+func start_a_game():
 	$GameState.start_game()
 	_push_into_conveyor()
 	_push_into_conveyor()
@@ -64,4 +68,4 @@ func _on_UI_start_game():
 
 
 func _on_GameState_game_ended(score):
-	$UI.show_game_over()
+	emit_signal("end_game")
