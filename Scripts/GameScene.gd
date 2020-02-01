@@ -10,10 +10,7 @@ onready var conveyor = get_node("Conveyor")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -52,3 +49,10 @@ func _set_initial_position(item):
 	position.x -= sprite_size.x/2 + item_initial_offset.x
 	position.y -= sprite_size.y/2 + item_initial_offset.y
 	item.set_position(position)
+
+
+func _on_UI_start_game():
+	_push_into_conveyor()
+	_push_into_conveyor()
+	_push_into_conveyor()
+	_push_into_conveyor()
