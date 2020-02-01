@@ -8,3 +8,4 @@ export_presets.cfg
 .mono/
 data_*/
 default_env.tres
+.DS_Store
