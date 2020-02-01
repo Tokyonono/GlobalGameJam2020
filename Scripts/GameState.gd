@@ -7,7 +7,7 @@ enum Point {
 	TRASH = 0,
 	PASSED = 5,
 	FIXED = 10,
-	BROKE = -5,
+	BROKE = -15,
 }
 
 var current_state = State.START
