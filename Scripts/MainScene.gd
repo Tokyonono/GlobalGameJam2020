@@ -4,7 +4,6 @@ enum Screen {MENU, GAME, RESULT}
 var start_screen = preload("res://Scenes/StartScene.tscn")
 var game_screen = preload("res://Scenes/GameScene.tscn")
 var end_screen = preload("res://Scenes/EndScene.tscn")
-var navi = preload("res://Scenes/Navi.tscn")
 var current_screen = null
 var flash_duration = 0.3
 var flash_timer = 0.0
@@ -24,9 +23,6 @@ func _show_screen(screen):
 			current_screen.connect("start_game", self, "_game_started")
 		Screen.GAME:
 			current_screen= game_screen.instance();
-			var current_navi= navi.instance()
-			add_child(current_navi)
-			current_screen.connect("navi", self, "_game_started")
 			current_screen.connect("end_game", self, "_game_ended")
 		Screen.RESULT:
 			current_screen = end_screen.instance();

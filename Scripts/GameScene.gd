@@ -3,6 +3,7 @@ extends Node2D
 signal end_game(score)
 
 var preloaded_item = preload("res://Scenes/Item.tscn")
+var navi_asset = preload("res://Scenes/Navi.tscn")
 var window_size = OS.window_size
 var item_initial_offset = Vector2(-150, 150)
 var flash_progress = 0.0
@@ -11,16 +12,25 @@ var flash_fail = Color.red
 var flash_good = Color.greenyellow
 var flash_target = screen_default
 var flash_speed = 1.0
+var fail_counter = 0
+var navi = null
+var navi_timer = 0.0
 
 onready var conveyor = get_node("Conveyor")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_a_game()
+	
+	navi= navi_asset.instance()
+	add_child(navi)
+	_hide_navi()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_tick_flash(delta)
+	_tick_navi(delta)
 
 func _input(event):
 	if $GameState.current_state != $GameState.State.GAME:
@@ -29,7 +39,10 @@ func _input(event):
 	if current_item == null:
 		_next()
 		return
-
+		
+	if fail_counter >=3:
+		_show_navi()
+	 
 	if event.is_action_pressed("approve_item"):
 		$Stamp.start_fading()
 		if current_item.condition != current_item.ShieldCondition.CORRECT:
@@ -37,6 +50,7 @@ func _input(event):
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
 			current_item.break_item()
+			fail_counter += 1
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -48,6 +62,7 @@ func _input(event):
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
 			current_item.break_item()
+			fail_counter += 1
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -60,6 +75,7 @@ func _input(event):
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
 			current_item.break_item()
+			fail_counter += 1
 		else:
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
@@ -107,8 +123,25 @@ func _tick_flash(delta):
 	flash_progress -= delta
 	flash_progress = clamp(flash_progress, 0.0, 1.0)
 
+func _tick_navi(delta):
+	if navi_timer > 0:
+		navi_timer -=delta
+		
+	elif navi_timer <0:
+		_hide_navi()
+
+func _show_navi():
+	navi.visible = true
+	navi_timer = 2
+	fail_counter = 0
+	
+func _hide_navi():
+	navi.visible = false
+	navi_timer = 0
+
 func start_a_game():
 	$GameState.start_game()
+	fail_counter = 0
 	for i in range(4):
 		_push_into_conveyor()
 
