@@ -88,5 +88,5 @@ func _tick_failure(delta):
 	var speed = 15
 	accel += delta * speed
 	set_position(position + Vector2(-1,-1) * speed + Vector2(0,1.8) * accel);
-	set_rotation(get_rotation() - delta)
+	set_rotation(get_rotation() - delta * 2.0)
 	lerp_progress += delta
