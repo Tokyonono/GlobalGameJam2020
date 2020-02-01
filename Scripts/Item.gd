@@ -11,6 +11,7 @@ var start_transform = null
 var target_scale = null
 var flash_duration = 0.15
 var flash_timer = 0.0
+var failstate = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,13 +46,23 @@ func _absorb_transform(var sourceNode):
 
 func _flash(var duration):
 	flash_timer = duration
+
+func _on_fail():
+	target_position = null
+	failstate = true
+	lerp_progress = 0.0
+	set_global_scale(Vector2(1.5,1.5))
+	modulate = Color.black	
+	z_index = -1
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_tick_position(delta)
 	_tick_color(delta)
+	_tick_failure(delta)
 
 func _tick_position(delta):
+	if failstate: return
 	if target_position != null:
 		#transform = transform.interpolate_with(target_transform, lerp_progress);
 		var new_pos = position.linear_interpolate(target_position, lerp_progress)
@@ -70,3 +81,12 @@ func _tick_color(delta):
 	flash_timer -= delta
 	if flash_timer <= 0.0:
 		update_texture()
+
+var accel = 1.0
+func _tick_failure(delta):
+	if !failstate: return
+	var speed = 15
+	accel += delta * speed
+	set_position(position + Vector2(-1,-1) * speed + Vector2(0,1.8) * accel);
+	set_rotation(get_rotation() - delta)
+	lerp_progress += delta
