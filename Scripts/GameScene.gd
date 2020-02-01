@@ -109,13 +109,8 @@ func _tick_flash(delta):
 
 func start_a_game():
 	$GameState.start_game()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
-	_push_into_conveyor()
+	for i in range(4):
+		_push_into_conveyor()
 
 func _on_GameState_game_ended(score):
 	emit_signal("end_game", score)
