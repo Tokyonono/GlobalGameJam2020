@@ -7,7 +7,7 @@
 size = 64
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 2 )
 
@@ -37,7 +37,7 @@ margin_left = -107.879
 margin_top = -203.0
 margin_right = 116.121
 margin_bottom = -103.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
