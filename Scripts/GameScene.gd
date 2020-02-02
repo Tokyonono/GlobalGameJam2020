@@ -56,6 +56,7 @@ func _input(event):
 			current_item.break_item()
 			fail_counter += 1
 		else:
+			$Accept.play()
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
 		_next()
@@ -69,6 +70,7 @@ func _input(event):
 			current_item.break_item()
 			fail_counter += 1
 		else:
+			$PolishSound.play()
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
 			current_item.clean_rust()
@@ -83,6 +85,7 @@ func _input(event):
 			current_item.break_item()
 			fail_counter += 1
 		else:
+			$HammerSound.play()
 			$ResultLabel.text = "Good"
 			$GameState.add_point($GameState.Point.RIGHT)
 			current_item.fix_crack()

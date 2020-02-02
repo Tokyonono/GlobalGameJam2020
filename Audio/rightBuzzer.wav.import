@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rightBuzzer.wav-e22f17fd4480f5a246bc847c84ae9d59.sample"
+
+[deps]
+
+source_file="res://Audio/rightBuzzer.wav"
+dest_files=[ "res://.import/rightBuzzer.wav-e22f17fd4480f5a246bc847c84ae9d59.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

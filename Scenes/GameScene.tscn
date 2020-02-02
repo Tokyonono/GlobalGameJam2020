@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Conveyor.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GameScene.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Art/icon.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/ButtonPressedFeedback.gd" type="Script" id=6]
 [ext_resource path="res://Audio/wrongBuzzer.wav" type="AudioStream" id=7]
+[ext_resource path="res://Audio/hammerSfx.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/polishSfx.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/rightBuzzer.wav" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 54
@@ -96,4 +99,13 @@ script = ExtResource( 6 )
 
 [node name="Miss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="PolishSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="HammerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Accept" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 [connection signal="game_ended" from="GameState" to="." method="_on_GameState_game_ended"]
