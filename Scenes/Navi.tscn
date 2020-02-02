@@ -39,6 +39,7 @@ position = Vector2( -0.0813675, 0.54435 )
 
 [node name="hey" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+volume_db = 8.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 875.388, 101.969 )

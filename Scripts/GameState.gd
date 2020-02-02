@@ -23,7 +23,10 @@ func _process(delta):
 	var minutes = int($Timer.time_left)/60
 	var seconds = int($Timer.time_left)%60
 	var ms = int(($Timer.time_left - minutes*60 - seconds) * 100.0)
-	$TimeLabel.text = "%dmin %ds %dms" % [minutes, seconds, ms]
+	if game_duration > 60.0:
+		$TimeLabel.text = "%dmin %ds %dms" % [minutes, seconds, ms]
+	else:
+		$TimeLabel.text = "%ds %dms" % [seconds, ms]
 
 func _input(event):
 	if event.is_action_pressed("pause_game"):
