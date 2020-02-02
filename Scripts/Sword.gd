@@ -20,11 +20,11 @@ func _ready():
 func update_texture():
 	match condition:
 		ItemCondition.CORRECT:
-			texture = load("res://Art/Shield_Correct.png")
+			texture = load("res://Art/Sword_Correct.png")
 		ItemCondition.RUST:
-			texture = load("res://Art/Shield_Rust.png") 
+			texture = load("res://Art/Sword_Rusty.png") 
 		ItemCondition.CRACK:
-			texture = load("res://Art/Shield_Cracked.png")
+			texture = load("res://Art/Sword_Cracked.png")
 
 func clean_rust():
 	condition = ItemCondition.CORRECT
