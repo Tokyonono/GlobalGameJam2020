@@ -62,6 +62,7 @@ func _input(event):
 	elif event.is_action_pressed("clean_rust"):
 		$Polish.start_fading()
 		if current_item.condition != current_item.ItemCondition.RUST:
+			$Miss.play()
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
@@ -75,6 +76,7 @@ func _input(event):
 	elif event.is_action_pressed("fix_crack"):
 		$Hammer.start_fading()
 		if current_item.condition != current_item.ItemCondition.CRACK:
+			$Miss.play()
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
