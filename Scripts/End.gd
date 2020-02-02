@@ -14,4 +14,5 @@ func set_score(score):
 	$ScoreLabel.text = str(score)
 
 func _on_RestartButton_pressed():
+	$Click.play()
 	emit_signal("start_game")

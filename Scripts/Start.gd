@@ -11,4 +11,5 @@ func _ready():
 #	pass
 
 func _on_StartButton_pressed():
+	$Click.play()
 	emit_signal("start_game")

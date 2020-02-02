@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/End.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Art/endScreen.png" type="Texture" id=3]
 [ext_resource path="res://Art/startBg.png" type="Texture" id=4]
+[ext_resource path="res://Audio/click_2.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -72,4 +73,7 @@ texture = ExtResource( 3 )
 position = Vector2( 514.066, 301.227 )
 z_index = -2
 texture = ExtResource( 4 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
