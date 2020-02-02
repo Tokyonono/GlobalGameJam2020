@@ -1,6 +1,6 @@
 extends Sprite
 
-enum ItemCondition {CORRECT=0, RUST=1, CRACK=2}
+enum ItemCondition {CORRECT=0, RUST=1, CRACK=2, RUST_FIXED=3, CRACK_FIXED=4}
 var condition = ItemCondition.CORRECT
 var target_position = null
 var lerp_progress = 0.0
@@ -25,13 +25,17 @@ func update_texture():
 			texture = load("res://Art/Shield_Rust.png") 
 		ItemCondition.CRACK:
 			texture = load("res://Art/Shield_Cracked.png")
+		ItemCondition.RUST_FIXED:
+			texture = load("res://Art/Shield_Rust_Fixed.png")
+		ItemCondition.CRACK_FIXED:
+			texture = load("res://Art/Shield_Cracked_Fixed.png")
 
-func clean_rust():
-	condition = ItemCondition.CORRECT
+func clean_rust():	
+	condition = ItemCondition.RUST_FIXED
 	_flash(flash_duration)
 	
 func fix_crack():
-	condition = ItemCondition.CORRECT
+	condition = ItemCondition.CRACK_FIXED
 	_flash(flash_duration)
 	
 func break_item():
