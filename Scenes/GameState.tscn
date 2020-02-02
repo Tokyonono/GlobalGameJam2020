@@ -32,7 +32,7 @@ margin_top = 48.5
 margin_right = 78.0
 margin_bottom = 78.5
 custom_fonts/font = SubResource( 2 )
-text = "Score"
+text = "Score: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }

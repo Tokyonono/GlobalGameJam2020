@@ -1,15 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Conveyor.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GameScene.gd" type="Script" id=2]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/GameState.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Art/icon.png" type="Texture" id=5]
+[ext_resource path="res://Art/UI/buttonA.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/ButtonPressedFeedback.gd" type="Script" id=6]
 [ext_resource path="res://Audio/wrongBuzzer.wav" type="AudioStream" id=7]
 [ext_resource path="res://Audio/hammerSfx.wav" type="AudioStream" id=8]
 [ext_resource path="res://Audio/polishSfx.wav" type="AudioStream" id=9]
 [ext_resource path="res://Audio/rightBuzzer.wav" type="AudioStream" id=10]
+[ext_resource path="res://Art/UI/buttonD.png" type="Texture" id=11]
+[ext_resource path="res://Art/UI/buttonS.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 54
@@ -78,23 +80,23 @@ z_index = 1
 
 [node name="Stamp" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( 749, 72 )
-scale = Vector2( 0.59375, 0.59375 )
+position = Vector2( 513.061, 302.312 )
+scale = Vector2( 0.999094, 0.997979 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="Polish" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( 853, 72 )
-scale = Vector2( 0.59375, 0.59375 )
-texture = ExtResource( 5 )
+position = Vector2( 514.296, 302.87 )
+scale = Vector2( 1.00393, 1.00034 )
+texture = ExtResource( 11 )
 script = ExtResource( 6 )
 
 [node name="Hammer" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( 951, 73.5 )
-scale = Vector2( 0.59375, 0.59375 )
-texture = ExtResource( 5 )
+position = Vector2( 511.18, 301.895 )
+scale = Vector2( 1.00117, 0.999158 )
+texture = ExtResource( 12 )
 script = ExtResource( 6 )
 
 [node name="Miss" type="AudioStreamPlayer" parent="."]

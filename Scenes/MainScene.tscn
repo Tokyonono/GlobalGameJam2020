@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/MainScene.gd" type="Script" id=1]
-[ext_resource path="res://Art/background2.png" type="Texture" id=2]
-[ext_resource path="res://Art/UI/buttonD.png" type="Texture" id=3]
-[ext_resource path="res://Art/UI/buttonA.png" type="Texture" id=4]
-[ext_resource path="res://Art/UI/buttonS.png" type="Texture" id=5]
+[ext_resource path="res://Art/Background.png" type="Texture" id=2]
 [ext_resource path="res://Audio/Mischief Maker.wav" type="AudioStream" id=6]
 
 [node name="Main" type="Node"]
@@ -13,18 +10,6 @@ script = ExtResource( 1 )
 [node name="main_bg" type="Sprite" parent="."]
 position = Vector2( 512.586, 301.207 )
 texture = ExtResource( 2 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-texture = ExtResource( 5 )
-centered = false
-
-[node name="Sprite3" type="Sprite" parent="."]
-texture = ExtResource( 3 )
-centered = false
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-centered = false
 
 [node name="bgsound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
