@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/MainScene.gd" type="Script" id=1]
-[ext_resource path="res://Art/Background.png" type="Texture" id=2]
+[ext_resource path="res://Art/background2.png" type="Texture" id=2]
 [ext_resource path="res://Art/UI/buttonD.png" type="Texture" id=3]
 [ext_resource path="res://Art/UI/buttonA.png" type="Texture" id=4]
 [ext_resource path="res://Art/UI/buttonS.png" type="Texture" id=5]
