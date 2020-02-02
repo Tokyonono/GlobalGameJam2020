@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Conveyor.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GameScene.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/GameState.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Art/icon.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/ButtonPressedFeedback.gd" type="Script" id=6]
+[ext_resource path="res://Audio/wrongBuzzer.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 54
@@ -92,4 +93,7 @@ position = Vector2( 951, 73.5 )
 scale = Vector2( 0.59375, 0.59375 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
+
+[node name="Miss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 [connection signal="game_ended" from="GameState" to="." method="_on_GameState_game_ended"]

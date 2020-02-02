@@ -49,6 +49,7 @@ func _input(event):
 	if event.is_action_pressed("approve_item"):
 		$Stamp.start_fading()
 		if current_item.condition != current_item.ItemCondition.CORRECT:
+			$Miss.play()
 			$ResultLabel.text = "Miss"
 			$GameState.add_point($GameState.Point.WRONG)
 			get_tree().get_root().get_node("Main")._flash_error()
