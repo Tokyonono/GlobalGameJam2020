@@ -33,14 +33,10 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -107.879
-margin_top = -203.0
-margin_right = 116.121
-margin_bottom = -103.0
+margin_left = 408.833
+margin_top = 445.894
+margin_right = 632.833
+margin_bottom = 545.894
 custom_fonts/font = SubResource( 2 )
 text = "Start"
 __meta__ = {
